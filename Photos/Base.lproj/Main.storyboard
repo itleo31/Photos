@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FnR-p4-POa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Photos-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MomentsViewController" customModule="PhotosSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,111 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-zR-8E6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="lMV-ii-oT2">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="45"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoGridCell" id="7LL-rC-79n" customClass="PhotoGridCell" customModule="PhotosSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="45" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ixx-Gg-GIL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UTq-gn-WtW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="6HF-h1-D8x"/>
+                                                        <constraint firstAttribute="height" constant="28" id="GRZ-om-S6e"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="UTq-gn-WtW" firstAttribute="leading" secondItem="7LL-rC-79n" secondAttribute="leading" id="FhH-jx-HLI"/>
+                                            <constraint firstAttribute="trailing" secondItem="ixx-Gg-GIL" secondAttribute="trailing" id="Koj-Qa-2Bd"/>
+                                            <constraint firstItem="ixx-Gg-GIL" firstAttribute="leading" secondItem="7LL-rC-79n" secondAttribute="leading" id="YcT-4V-uZ4"/>
+                                            <constraint firstItem="ixx-Gg-GIL" firstAttribute="top" secondItem="7LL-rC-79n" secondAttribute="top" id="fCt-AU-Bts"/>
+                                            <constraint firstAttribute="bottom" secondItem="ixx-Gg-GIL" secondAttribute="bottom" id="kfO-gW-W2E"/>
+                                            <constraint firstItem="UTq-gn-WtW" firstAttribute="top" secondItem="7LL-rC-79n" secondAttribute="top" id="lZM-B9-CeF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="liveImageView" destination="UTq-gn-WtW" id="Fgx-Es-EqY"/>
+                                            <outlet property="photoImageView" destination="ixx-Gg-GIL" id="MnL-XE-qZQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoGridSectionHeader" id="8un-w6-4sL" customClass="PhotoGridSectionHeader" customModule="PhotosSample" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-mn-w7n">
+                                            <rect key="frame" x="8" y="13.5" width="359" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Jpx-mn-w7n" firstAttribute="trailing" secondItem="8un-w6-4sL" secondAttribute="trailingMargin" id="3rR-l8-jA4"/>
+                                        <constraint firstItem="Jpx-mn-w7n" firstAttribute="leading" secondItem="8un-w6-4sL" secondAttribute="leadingMargin" id="CVt-6J-lnC"/>
+                                        <constraint firstItem="Jpx-mn-w7n" firstAttribute="centerY" secondItem="8un-w6-4sL" secondAttribute="centerY" id="t2I-s6-vFg"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="textLabel" destination="Jpx-mn-w7n" id="jVq-Ci-L0e"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Nbu-To-IlK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="o7q-yw-aTE"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vbz-zR-8E6" secondAttribute="bottom" id="2sP-pK-id7"/>
+                            <constraint firstItem="Vbz-zR-8E6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ARx-Sw-efa"/>
+                            <constraint firstItem="Vbz-zR-8E6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Txi-Tm-6dd"/>
+                            <constraint firstAttribute="trailing" secondItem="Vbz-zR-8E6" secondAttribute="trailing" id="iEf-Ih-VVA"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Photos" id="HmO-mR-Ssf"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Vbz-zR-8E6" id="olN-ma-HZ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r8x-Am-fSY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FnR-p4-POa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UOe-Cx-wg1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Pxd-hA-egV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0K1-io-E2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="791.15442278860576"/>
         </scene>
     </scenes>
 </document>
