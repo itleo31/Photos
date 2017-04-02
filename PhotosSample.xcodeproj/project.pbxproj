@@ -13,6 +13,8 @@
 		CFC5498C1E909C03001A0302 /* FoundationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498B1E909C03001A0302 /* FoundationExt.swift */; };
 		CFC5498E1E90B7AE001A0302 /* UIKitExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498D1E90B7AE001A0302 /* UIKitExt.swift */; };
 		CFC549901E90B848001A0302 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498F1E90B848001A0302 /* AssetModel.swift */; };
+		CFC549931E90E444001A0302 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */; };
+		CFC549951E90F76E001A0302 /* PhotoViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */; };
 		CFCF6E6B1E9016C700136F4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCF6E6A1E9016C700136F4A /* AppDelegate.swift */; };
 		CFCF6E701E9016C700136F4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCF6E6E1E9016C700136F4A /* Main.storyboard */; };
 		CFCF6E721E9016C700136F4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCF6E711E9016C700136F4A /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		CFC5498B1E909C03001A0302 /* FoundationExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExt.swift; sourceTree = "<group>"; };
 		CFC5498D1E90B7AE001A0302 /* UIKitExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExt.swift; sourceTree = "<group>"; };
 		CFC5498F1E90B848001A0302 /* AssetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
+		CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewModel.swift; sourceTree = "<group>"; };
 		CFCF6E671E9016C700136F4A /* PhotosSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCF6E6A1E9016C700136F4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFCF6E6F1E9016C700136F4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CFC549911E90E420001A0302 /* PhotoViewer */ = {
+			isa = PBXGroup;
+			children = (
+				CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */,
+				CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */,
+			);
+			name = PhotoViewer;
+			sourceTree = "<group>";
+		};
 		CFCF6E5E1E9016C700136F4A = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +141,7 @@
 		CFCF6E691E9016C700136F4A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				CFC549911E90E420001A0302 /* PhotoViewer */,
 				CFCF6E921E90279300136F4A /* Components */,
 				CFCF6E8F1E90269400136F4A /* Common */,
 				CFCF6E8A1E9023BC00136F4A /* Moments */,
@@ -384,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC549951E90F76E001A0302 /* PhotoViewerViewModel.swift in Sources */,
 				CFC5498E1E90B7AE001A0302 /* UIKitExt.swift in Sources */,
 				CFCF6E911E9026A000136F4A /* Misc.swift in Sources */,
 				CFCF6E9C1E902C1600136F4A /* MomentsRepository.swift in Sources */,
@@ -391,6 +406,7 @@
 				CFC5498A1E9090FE001A0302 /* RxExt.swift in Sources */,
 				CFCF6E961E90285300136F4A /* Global.swift in Sources */,
 				CFCF6E6B1E9016C700136F4A /* AppDelegate.swift in Sources */,
+				CFC549931E90E444001A0302 /* PhotoViewerViewController.swift in Sources */,
 				CFC549901E90B848001A0302 /* AssetModel.swift in Sources */,
 				CFC5498C1E909C03001A0302 /* FoundationExt.swift in Sources */,
 			);

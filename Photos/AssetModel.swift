@@ -64,6 +64,10 @@ class MomentsCollection {
         return collections.count
     }
     
+    subscript(index: IndexPath) -> Asset {
+        return collection(at: index.section).asset(at: index.item)
+    }
+    
     func collection(at: Int) -> AssetCollection {
         return collections[at]
     }
@@ -110,10 +114,6 @@ class Asset {
     
     fileprivate init(phAsset: PHAsset) {
         self.phAsset = phAsset
-    }
-    
-    var title: String? {
-        return phAsset.burstIdentifier
     }
     
     var isLivePhoto: Bool {

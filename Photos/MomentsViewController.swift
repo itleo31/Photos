@@ -90,6 +90,14 @@ class MomentsViewController: UIViewController, UICollectionViewDataSource, UICol
     private func fetchCollection() {
         momentsRepo.fetch()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = (segue.destination as? UINavigationController)?.viewControllers.first as? PhotoViewerViewController, segue.identifier == "ViewPhoto" {
+            if let idxPath = collectionView.indexPath(for: sender as! UICollectionViewCell), let collection = collection {
+                destVC.setCurrentIndex(idxPath, inCollection: collection)
+            }
+        }
+    }
 
     // MARK: - CollectionView
     
@@ -107,12 +115,11 @@ class MomentsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let collection = collection {
             let asset = collection.collection(at: indexPath.section).asset(at: indexPath.item)
-            cell.liveImageView.isHidden = !asset.isLivePhoto
+//            cell.liveImageView.isHidden = !asset.isLivePhoto
             cell.liveImageView.image = Constants.livePhotoIcon
             cell.localIdentifier = asset.phAsset.localIdentifier
             
-            // TODO: OperationQueue to optimise loading
-            momentsRepo.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill)
+            momentsRepo.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
                 .observeOnMain()
                 .bindNext { (image) in
                     if cell.localIdentifier == asset.phAsset.localIdentifier {

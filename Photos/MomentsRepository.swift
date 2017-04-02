@@ -41,12 +41,14 @@ class MomentsRepository: NSObject, PHPhotoLibraryChangeObserver {
     func fetch() {
         let fetchResult = PHAssetCollection.fetchMoments(with: nil)
         momentsCollection.value = MomentsCollection(fetchResult: fetchResult)
+        
+        
     }
     
-    func requestImage(for asset: Asset, targetSize: CGSize, contentMode: PHImageContentMode) -> Observable<UIImage> {
+    func requestImage(for asset: Asset, targetSize: CGSize, contentMode: PHImageContentMode, options: PHImageRequestOptions?) -> Observable<UIImage> {
         return Observable.create { (observer) -> Disposable in
             self.fetchQueue.async {
-                self.imageManager.requestImage(for: asset.phAsset, targetSize: targetSize, contentMode: contentMode, options: nil) { (image, _) in
+                self.imageManager.requestImage(for: asset.phAsset, targetSize: targetSize, contentMode: contentMode, options: options) { (image, _) in
                     if let image = image {
                         observer.onNext(image)
                         observer.onCompleted()
