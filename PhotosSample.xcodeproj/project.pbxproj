@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		65A58DEF98F8A39286A1AE55 /* Pods_PhotosSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F2135172046C267EC5F3B0 /* Pods_PhotosSampleTests.framework */; };
+		89E5E2051E91F4B2008C0BA1 /* PhotosPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E5E2041E91F4B2008C0BA1 /* PhotosPageViewController.swift */; };
+		89E5E2091E91F7CE008C0BA1 /* PhotosPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E5E2081E91F7CE008C0BA1 /* PhotosPageViewModel.swift */; };
 		B2B593FF5CC75BE77090C913 /* Pods_PhotosSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D7F80B016FF1A52B038532 /* Pods_PhotosSample.framework */; };
 		CFC5498A1E9090FE001A0302 /* RxExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC549891E9090FE001A0302 /* RxExt.swift */; };
 		CFC5498C1E909C03001A0302 /* FoundationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498B1E909C03001A0302 /* FoundationExt.swift */; };
 		CFC5498E1E90B7AE001A0302 /* UIKitExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498D1E90B7AE001A0302 /* UIKitExt.swift */; };
 		CFC549901E90B848001A0302 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5498F1E90B848001A0302 /* AssetModel.swift */; };
 		CFC549931E90E444001A0302 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */; };
-		CFC549951E90F76E001A0302 /* PhotoViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */; };
 		CFCF6E6B1E9016C700136F4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCF6E6A1E9016C700136F4A /* AppDelegate.swift */; };
 		CFCF6E701E9016C700136F4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCF6E6E1E9016C700136F4A /* Main.storyboard */; };
 		CFCF6E721E9016C700136F4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCF6E711E9016C700136F4A /* Assets.xcassets */; };
@@ -43,12 +44,13 @@
 		4E14E755BC905B57ADFF8F3F /* Pods-PhotosSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotosSampleTests/Pods-PhotosSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7309F7F587485D59C3772A6B /* Pods_Photos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Photos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B2E63A6CB08D3B5363604F /* Pods_PhotosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89E5E2041E91F4B2008C0BA1 /* PhotosPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPageViewController.swift; sourceTree = "<group>"; };
+		89E5E2081E91F7CE008C0BA1 /* PhotosPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPageViewModel.swift; sourceTree = "<group>"; };
 		CFC549891E9090FE001A0302 /* RxExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxExt.swift; sourceTree = "<group>"; };
 		CFC5498B1E909C03001A0302 /* FoundationExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExt.swift; sourceTree = "<group>"; };
 		CFC5498D1E90B7AE001A0302 /* UIKitExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExt.swift; sourceTree = "<group>"; };
 		CFC5498F1E90B848001A0302 /* AssetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
-		CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewModel.swift; sourceTree = "<group>"; };
 		CFCF6E671E9016C700136F4A /* PhotosSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCF6E6A1E9016C700136F4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFCF6E6F1E9016C700136F4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,7 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				CFC549921E90E444001A0302 /* PhotoViewerViewController.swift */,
-				CFC549941E90F76E001A0302 /* PhotoViewerViewModel.swift */,
+				89E5E2041E91F4B2008C0BA1 /* PhotosPageViewController.swift */,
+				89E5E2081E91F7CE008C0BA1 /* PhotosPageViewModel.swift */,
 			);
 			name = PhotoViewer;
 			sourceTree = "<group>";
@@ -249,7 +252,6 @@
 				TargetAttributes = {
 					CFCF6E661E9016C700136F4A = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 28B4UGC4GQ;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -398,8 +400,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFC549951E90F76E001A0302 /* PhotoViewerViewModel.swift in Sources */,
 				CFC5498E1E90B7AE001A0302 /* UIKitExt.swift in Sources */,
+				89E5E2051E91F4B2008C0BA1 /* PhotosPageViewController.swift in Sources */,
+				89E5E2091E91F7CE008C0BA1 /* PhotosPageViewModel.swift in Sources */,
 				CFCF6E911E9026A000136F4A /* Misc.swift in Sources */,
 				CFCF6E9C1E902C1600136F4A /* MomentsRepository.swift in Sources */,
 				CFCF6E8E1E90240B00136F4A /* MomentsViewController.swift in Sources */,
@@ -551,7 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 28B4UGC4GQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Photos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khanhpham.example.Photos;
@@ -568,7 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 28B4UGC4GQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Photos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.khanhpham.example.Photos;

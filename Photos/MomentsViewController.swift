@@ -92,8 +92,9 @@ class MomentsViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destVC = (segue.destination as? UINavigationController)?.viewControllers.first as? PhotoViewerViewController, segue.identifier == "ViewPhoto" {
+        if let destVC = (segue.destination as? UINavigationController)?.viewControllers.first as? PhotosPageViewController, segue.identifier == "ViewPhoto" {
             if let idxPath = collectionView.indexPath(for: sender as! UICollectionViewCell), let collection = collection {
+                
                 destVC.setCurrentIndex(idxPath, inCollection: collection)
             }
         }

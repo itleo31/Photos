@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension UIViewController {
+    var isVisible: Bool {
+        return isViewLoaded && view.window != nil
+    }
+}
+
 extension UICollectionView {
     func performBatchUpdates(with changes: [CollectionDataChange], completion: ((Void) -> Void)? = nil) {
         if changes.isEmpty { return }

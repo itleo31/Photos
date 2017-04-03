@@ -68,6 +68,12 @@ class MomentsCollection {
         return collection(at: index.section).asset(at: index.item)
     }
     
+    var assetsCount: Int {
+        return collections.enumerated().reduce(0) { (prev, ele) -> Int in
+            return prev + ele.element.assetsCount
+        }
+    }
+    
     func collection(at: Int) -> AssetCollection {
         return collections[at]
     }

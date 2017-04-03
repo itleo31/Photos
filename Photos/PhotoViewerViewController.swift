@@ -21,9 +21,15 @@ class PhotoViewerViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var singleTapGesture: UITapGestureRecognizer!
     @IBOutlet var doubleTapGesture: UITapGestureRecognizer!
     
-    let viewModel = PhotoViewerViewModel()
+    var image: UIImage! {
+        didSet {
+            if imageView != nil {
+                loadImage()
+            }
+        }
+    }
     
-    let rxBag = DisposeBag()
+    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,35 +38,20 @@ class PhotoViewerViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.layoutIfNeeded()
         loadImage()
     }
     
     private func loadImage() {
-        viewModel.loadCurrentAsset()
-            .observeOnMain()
-            .bindNext { [unowned self] (image) in
-                if self.imageView == nil { return }
-                self.imageView.image = image
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            }
-            .addDisposableTo(rxBag)
-    }
-    
-    func setCurrentIndex(_ index: IndexPath, inCollection c: MomentsCollection) {
-        viewModel.collection = c
-        viewModel.currentIndex = viewModel.convertToIndex(from: index)
-        loadImage()
+        imageView.image = image
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        updateMinZoomScale(forSize: view.bounds.size)
+        updateConstraints(forSize: view.bounds.size)
     }
     
     private func setup() {
         imageView.image = nil
         singleTapGesture.require(toFail: doubleTapGesture)
-    }
-    
-    @IBAction func didTapBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didDoubleTap(_ sender: UITapGestureRecognizer) {

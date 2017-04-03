@@ -1,18 +1,17 @@
 //
-//  PhotoViewerViewModel.swift
+//  PhotosPageViewModel.swift
 //  PhotosSample
 //
-//  Created by Khanh Pham on 4/2/17.
+//  Created by Khanh Pham on 4/3/17.
 //  Copyright © 2017 Khanh Pham. All rights reserved.
 //
 
 import Foundation
-
-enum PhotoViewerViewModelError: Error {
+enum PhotosPageViewModelError: Error {
     case assetEmpty
 }
 
-class PhotoViewerViewModel: NSObject {
+class PhotosPageViewModel: NSObject {
     
     var collection: MomentsCollection!
     let momentsRepo = MomentsRepository.shared
@@ -21,6 +20,15 @@ class PhotoViewerViewModel: NSObject {
     
     var currentAsset: Asset? {
         return asset(at: currentIndex)
+    }
+    
+    func hasAsset(at idx: Int) -> Bool {
+        if idx < 0 || idx > assetCount - 1 { return false }
+        return asset(at: idx) != nil
+    }
+    
+    var assetCount: Int {
+        return collection.assetsCount
     }
     
     func asset(at idx: Int) -> Asset? {
@@ -39,8 +47,8 @@ class PhotoViewerViewModel: NSObject {
         return nil
     }
     
-    func loadCurrentAsset() -> Observable<UIImage> {
-        guard let asset = currentAsset else { return Observable.error(PhotoViewerViewModelError.assetEmpty) }
+    func loadAsset(at idx: Int) -> Observable<UIImage> {
+        guard let asset = asset(at: idx) else { return Observable.error(PhotosPageViewModelError.assetEmpty) }
         
         let scale = UIScreen.main.scale
         let size = UIScreen.main.bounds.size
@@ -50,6 +58,14 @@ class PhotoViewerViewModel: NSObject {
         options.deliveryMode = .highQualityFormat
         options.isNetworkAccessAllowed = true
         return momentsRepo.requestImage(for: asset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFit, options: options)
+    }
+    
+    func deleteAsset(at idx: Int) -> Observable<Void> {
+        guard let asset = asset(at: idx) else {
+            return Observable.error(PhotosPageViewModelError.assetEmpty)
+        }
+        
+        return momentsRepo.delete(image: asset)
     }
     
     func convertToIndex(from indexPath: IndexPath) -> Int {
