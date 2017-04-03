@@ -50,4 +50,12 @@ extension IndexSet {
         ints.forEach { indexSet.insert($0) }
         return indexSet
     }
+    
+    func hasIntersect(with other: IndexSet) -> Bool {
+        if let start = other.first, let end = other.last {
+            return intersects(integersIn: start...end)
+        } else {
+            return false
+        }
+    }
 }

@@ -64,8 +64,9 @@ class MomentsRepository: NSObject, PHPhotoLibraryChangeObserver {
     
     // MARK: - Updating
     
-    func delete(image: Asset) -> Observable<Void> {
+    func delete(image: Asset, inCollection c: AssetCollection) -> Observable<Void> {
         return Observable.create { (observer) -> Disposable in
+            
             self.photoLibrary.performChanges({
                 let imagesToDelete = NSArray(array: [image.phAsset])
                 PHAssetChangeRequest.deleteAssets(imagesToDelete)
@@ -109,6 +110,26 @@ class MomentsRepository: NSObject, PHPhotoLibraryChangeObserver {
                 
                 collection.reload(from: changes.fetchResultAfterChanges)
                 if changes.hasIncrementalChanges {
+                    if let changed = changes.changedIndexes {
+                        var shouldReload = false
+                        if let removed = changes.removedIndexes, !removed.isEmpty, changed.hasIntersect(with: removed) {
+                            shouldReload = true
+                        } else if let inserted = changes.insertedIndexes, !inserted.isEmpty,changed.hasIntersect(with: inserted) {
+                            shouldReload = true
+                        } else {
+                            changes.enumerateMoves({ (from, to) in
+                                if changed.contains(from) || changed.contains(to) {
+                                    shouldReload = true
+                                }
+                            })
+                        }
+                        if shouldReload {
+                            self.changes.value = [CollectionDataChange.reloadAll]
+                            return
+                        }
+                    }
+                    
+                    
                     // For indexes to make sense, updates must be in this order:
                     // delete, insert, reload, move
                     var dataChanges = [CollectionDataChange]()

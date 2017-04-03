@@ -32,14 +32,17 @@ class PhotosPageViewModel: NSObject {
     }
     
     func asset(at idx: Int) -> Asset? {
-        if currentIndex < 0 {
-            return nil
-        }
+        return assetAndCollection(at: idx)?.0
+    }
+    
+    func assetAndCollection(at idx: Int) -> (Asset, AssetCollection)? {
+        if idx < 0 || idx > assetCount { return nil }
         
         var tempCount = 0
         for colIdx in 0..<collection.collectionCount {
             if tempCount + collection.collection(at: colIdx).assetsCount > idx {
-                return collection.collection(at: colIdx).asset(at: idx - tempCount)
+                let c = collection.collection(at: colIdx)
+                return (c.asset(at: idx - tempCount), c)
             } else {
                 tempCount = tempCount + collection.collection(at: colIdx).assetsCount
             }
@@ -61,11 +64,11 @@ class PhotosPageViewModel: NSObject {
     }
     
     func deleteAsset(at idx: Int) -> Observable<Void> {
-        guard let asset = asset(at: idx) else {
+        guard let (asset, col) = assetAndCollection(at: idx) else {
             return Observable.error(PhotosPageViewModelError.assetEmpty)
         }
         
-        return momentsRepo.delete(image: asset)
+        return momentsRepo.delete(image: asset, inCollection: col)
     }
     
     func convertToIndex(from indexPath: IndexPath) -> Int {

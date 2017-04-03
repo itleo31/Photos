@@ -39,10 +39,13 @@ class PhotosPageViewController: UIPageViewController, UIPageViewControllerDataSo
     @IBAction func didTapDelete(_ sender: Any) {
         viewModel.deleteAsset(at: viewModel.currentIndex)
             .observeOnMain()
-            .bindNext { [unowned self] in
+            .subscribe(onError: { (err) in
+                log("\(err)")
+            }, onCompleted: { [unowned self] in
                 self.handleAfterDeleteAsset()
-            }
+            })
             .addDisposableTo(rxBag)
+        
     }
     
     private func handleAfterDeleteAsset() {

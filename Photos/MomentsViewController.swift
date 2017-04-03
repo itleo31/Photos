@@ -73,6 +73,7 @@ class MomentsViewController: UIViewController, UICollectionViewDataSource, UICol
             .throttle(0.2, scheduler: MainScheduler.instance)
             .bindNext { [unowned self] (collection) in
                 self.collection = collection
+                self.resetCachedAssets()
                 self.collectionView.reloadDataThenScrollToBottom()
             }
             .addDisposableTo(rxBag)
